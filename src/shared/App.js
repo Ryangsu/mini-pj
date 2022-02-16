@@ -13,7 +13,6 @@ import Write from "../pages/Write"
 import Detail from '../pages/Detail';
 
 
-
 function App() {
   return (
     <React.Fragment>
@@ -24,7 +23,11 @@ function App() {
         <Route path="/" exact component={Main}/>
         <Route path="/write" exact component={Write}/>
         <Route path="/write/:id" exact component={Write}/>
+<<<<<<< HEAD
         <Route path="/detail" exact component={Detail}/>
+=======
+        {/* <Route path="/detail/:id" exact component={Detail}/> */}
+>>>>>>> 9d5fd5c3d95fa2c658ac0673c554350f9ec10d9c
       </ConnectedRouter>
       </BrowserRouter>
 

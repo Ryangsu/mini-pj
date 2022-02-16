@@ -72,7 +72,7 @@ const PostWrite = (props) => {
             value={title}
             _onChange={(e) => {
                 setTitle(e.target.value);
-              }}
+            }}
             label="제품명"
             placeholder="제품명을 적어주세요"
             />
