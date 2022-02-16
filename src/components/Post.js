@@ -26,13 +26,13 @@ const Post = (props) => {
         <React.Fragment>
             <Grid>
                 <Grid is_flex="is_flex" padding="16px">
-                    <Grid is_flex="is_flex" width="auto">
+                    {/* <Grid is_flex="is_flex" width="auto">
                         <Image shape="circle" src={props.src}/>
                         <Text bold="bold">{props.user_info.user_name}</Text>
-                    </Grid>
+                    </Grid> */}
                     <Grid is_flex="is_flex" width="auto">
-                        <Text>{props.insert_dt}</Text>
-                        {
+                        {/* <Text>{props.insert_dt}</Text>&nbsp;&nbsp; */}
+                        {/* {
                             props.is_me && <Button
                                     width="auto"
                                     margin="4px"
@@ -42,8 +42,8 @@ const Post = (props) => {
                                     }}>
                                     수정
                                 </Button>
-                        }
-                        {props.is_me && <Button width="auto" margin="4px" padding="4px" _onClick={deletePost}>삭제</Button>}
+                        } */}
+                        {/* {props.is_me && <Button width="auto" margin="4px" padding="4px" _onClick={deletePost}>삭제</Button>} */}
                     </Grid>
                 </Grid>
 
@@ -52,10 +52,6 @@ const Post = (props) => {
                 </Grid>
                 <Grid>
                     <Image shape="rectangle" src={props.image_url}/>
-                </Grid>
-
-                <Grid padding="16px">
-                    <Text margin="0px" bold="bold">댓글 {props.comment_cnt}개</Text>
                 </Grid>
             </Grid>
         </React.Fragment>
@@ -67,9 +63,10 @@ Post.defaultProps = {
         user_name: "mean0",
         user_profile: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg"
     },
-    image_url: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
-    contents: "고양이네요!",
-    comment_cnt: 10,
+    image_url: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile26.uf.tistory.com%2Fimage%2F99D292345AB6477A147D63",
+    title : "상품명",
+    price : "100,000",
+    description: "이거 진짜 가성비 쩔더라",
     insert_dt: "2020-02-10 10:00:00",
     is_me: false
 };
