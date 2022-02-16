@@ -4,12 +4,13 @@ import { Button } from '../elements';
 
 import {BrowserRouter, Route} from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router" 
+import { history } from "../redux/configureStore"
+
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Main from "../pages/Main"
 import Write from "../pages/Write"
-// import Detail from '../pages/Detail';
-import { history } from "../redux/configureStore"
+import Detail from '../pages/Detail';
 
 
 
@@ -23,7 +24,7 @@ function App() {
         <Route path="/" exact component={Main}/>
         <Route path="/write" exact component={Write}/>
         <Route path="/write/:id" exact component={Write}/>
-        {/* <Route path="/detail" exact component={Detail}/> */}
+        <Route path="/detail" exact component={Detail}/>
       </ConnectedRouter>
       </BrowserRouter>
 
