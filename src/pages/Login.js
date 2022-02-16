@@ -10,13 +10,13 @@ import { history } from "../redux/configureStore";
 const Login = (props) => {
   const dispatch = useDispatch();
 
-  const [nick_name, setnick_name] = React.useState("");
+  const [nick_name, setNick_name] = React.useState("");
   const [pwd, setPwd] = React.useState("");
 
+  
   const Login = () => {
     
     dispatch(userActions.loginDB(nick_name, pwd));
-    history.push("/")
   };
 
   return (
@@ -41,7 +41,9 @@ const Login = (props) => {
               <Input
                 label="닉네임"
                 placeholder="닉네임을 입력해주세요."
-                _onChange={(e) => Input(e, setnick_name)}
+                _onChange={(e) => {
+                  setNick_name(e.target.value)
+                }}
                 value={nick_name}
               />
             </Grid>
@@ -52,7 +54,9 @@ const Login = (props) => {
                 label="비밀번호"
                 placeholder="비밀번호를 입력해주세요."
                 type="password"
-                _onChange={(e) => Input(e, setPwd)}
+                _onChange={(e) => {
+                  setPwd(e.target.value)
+                }}
                 value={pwd}
               />
             </Grid>

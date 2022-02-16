@@ -14,9 +14,6 @@ const Upload = (props) => {
 
 
     const selectFile = (e) => {
-        console.log(e);
-        console.log(e.target);
-        console.log(e.target.files[0]);
 
         console.log(fileInput.current.files[0])
         
@@ -33,17 +30,36 @@ const Upload = (props) => {
 
     const uploadDB = () => {
         let image = fileInput.current.files[0];
-        dispatch(imageActions.uploadImage(image));
+        
     }
 
+    const onChange = (e) => {
+        const img = e.target.files[0]
+        const formData = new FormData();
+        formData.append('img', img);
+        console.log(formData) // FormData {}
+        dispatch(imageActions.uploadImageDB(formData));
+        for (const keyValue of formData) console.log(keyValue); // ["img", File] File은 객체
+        console.log(img)
 
+        const reader = new FileReader();
+        const file = fileInput.current.files[0];
+
+        reader.readAsDataURL(file);
+
+        reader.onloadend = () => {
+            console.log(reader.result)
+            dispatch(imageActions.setPreview(reader.result));
+        }
+    }
+    
     return (
         <React.Fragment>
             <Grid padding = "16px">
-            <input type="file" onChange={selectFile} ref={fileInput} disabled={is_uploading}/>
+            <input type="file" onChange={onChange} ref={fileInput}/>
             </Grid>
-            <Grid padding ="16px">
-            <Button width = "200px" _onClick={uploadDB}>업로드하기</Button>
+            <Grid padding ="0px 0px 0px 16px">
+            {/* <Button width = "200px" _onClick={}>업로드하기</Button> */}
             </Grid>
         </React.Fragment>
     )

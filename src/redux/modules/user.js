@@ -25,6 +25,7 @@ const user_initial = {
     user_name : 'yang',
 };
 
+
 const loginDB = (nick_name, pwd) => {
   return function (dispatch, getState, {history}){
    apis
@@ -43,9 +44,9 @@ const loginDB = (nick_name, pwd) => {
                   })
               );
           })
-          .catch((err)=>{
-          console.log(err);
-          history.push("/")
+        history.replace("/")
+        .catch((err)=>{
+        console.log(err);
       });
   }
 }    
@@ -83,9 +84,9 @@ export default handleActions(
         }),
           [LOG_OUT]: (state, action) =>
         produce(state, (draft) => {
-          deleteCookie("is_login");
+          localStorage.removeItem("token");
           draft.user = null;
-                  draft.is_login = false;
+          draft.is_login = false;
         }),
       [GET_USER]: (state, action) =>
         produce(state, (draft) => {}),

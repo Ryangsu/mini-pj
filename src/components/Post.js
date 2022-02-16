@@ -18,10 +18,6 @@ const Post = (props) => {
     //     }, []);
     // const {id} = props;
 
-    const deletePost = () => {
-        dispatch(postdeleteActions.deletePostDB())
-    };
-
     return (
         <React.Fragment>
             <Grid>
@@ -46,13 +42,15 @@ const Post = (props) => {
                         {/* {props.is_me && <Button width="auto" margin="4px" padding="4px" _onClick={deletePost}>삭제</Button>} */}
                     </Grid>
                 </Grid>
-
-                <Grid padding="16px">
-                    <Text>{props.contents}</Text>
-                </Grid>
                 <Grid>
                     <Image shape="rectangle" src={props.image_url}/>
                 </Grid>
+                <Grid>
+                    <Text>이름 : {props.title}</Text>
+                    <Text>가격 : {props.price}</Text>
+                    <Text>설명 : {props.description}</Text>
+                </Grid>
+                
             </Grid>
         </React.Fragment>
     );

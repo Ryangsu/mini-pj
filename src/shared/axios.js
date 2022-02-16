@@ -20,6 +20,8 @@ export const apis = {
   createLogin: (user) => instance.post("/api/login", user),
   getUserInfo: () => instance.get("/api/auth"),
   postWrite: (items) => instance.post("/api/items", items),
+  imageUpload: (image) => instance.post("/api/imgs", image),
+  // postWrite: (items) => instance.post("/api/items", items),
   postGet : (items) => instance.get("/api/items/", items),
   deletePost: () => instance.delete("/api/items/:itemid"),
 };

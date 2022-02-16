@@ -1,6 +1,7 @@
 import React from "react";
 import apis from "../shared/axios";
 import Post from "../components/Post"
+import Header from "../components/Header";
 
 // import Detail from "../pages/Detail";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,22 +25,22 @@ const PostList = (props) => {
 
     return (
     <React.Fragment>
-        <Grid>
+        <Header></Header>
+        <Grid is_flex padding = "30px">
         {post_list.map((p, idx) => {
             // if (p.user_info.user_id === user_info?.uid) {
                 return (
-                <Grid width = "400px" height = "300px" bg="#ffffff"
+                <Grid padding = "16px" bg="#ffffff"
                         margin="8px 0px"
                         key={p._id}
                         _onClick={() => {
                         history.push(`/detail/${p._id}`);}}>
-                    <Post key={p._id} is_me />
+                    <Post key={p._id} {...p}/>
                 </Grid>
                 )
             })};
         
         </Grid>       
-        <Button is_float text="+" _onClick={() => {history.push("/write")}}></Button>
     </React.Fragment>   
     )}
 

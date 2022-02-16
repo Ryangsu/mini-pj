@@ -1,5 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import produce from "immer";
+import { apis } from "../../shared/axios";
 
 // import { storage } from "../../shared/firebase";
 
@@ -12,28 +13,32 @@ const uploadImage = createAction(UPLOAD_IMAGE, (image_url) => ({image_url}));
 const setPreview = createAction(SET_PREVIEW, (preview) => ({preview}));
 
 const initialState = {
-    image_url: '',
+    image_url: "",
     uploading: false,
     preview: null,
 }
 
-// const uploadImageFB = (image) => {
-//     return function(dispatch, getState, {history}){
 
-//         dispatch(uploading(true));
 
-//         const _upload = storage.ref(`images/${image.name}`).put(image);
+const uploadImageDB = (image) => {
+    return function(dispatch, getState, {history}){
+            apis
+              .imageUpload(image)
+              .then((res) => {
+                console.log("하이");
+                window.alert("😆 이미지 업로드 성공! 😆");
+              })
+              .catch((error) => {
+                console.log("이미지 업로드 실패");
+                alert(error.response.data.errorMessage);
+                // window.alert(error.errorMessage)
+                return;
+              });
+          ;
+        dispatch(uploading(true));
 
-//         _upload.then((snapshot)=>{
-//             console.log(snapshot);
-//                 dispatch(uploading(false));
-//             snapshot.ref.getDownloadURL().then((url)=> {
-//                 dispatch(uploadImage(url));
-//                 console.log(url);
-//             });
-//         });
-//     }
-// }
+    }
+}
 
 export default handleActions({
     [UPLOAD_IMAGE]: (state, action) => produce(state, (draft) => {
@@ -51,7 +56,7 @@ export default handleActions({
 
 const actionCreators = {
     uploadImage,
-    // uploadImageFB,
+    uploadImageDB,
     setPreview,
 }
 
