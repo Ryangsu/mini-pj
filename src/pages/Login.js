@@ -114,7 +114,7 @@ const RightBox = styled.div`
   align-items: center;
   width: 40%;
   height: 100%;
-  background-color: #ffb703;
+  background-color: #82CBC4;
 `;
 
 const RightWrap = styled.div`
