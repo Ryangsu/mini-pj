@@ -1,6 +1,6 @@
 import React from "react";
 import apis from "../shared/axios";
-import Write from "./Write"
+import Post from "../components/Post"
 
 // import Detail from "../pages/Detail";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,15 +25,24 @@ const PostList = (props) => {
     return (
     <React.Fragment>
         <Grid bg={"#EFF6FF"} padding="20px 0px">
-        {/* {post_list.map(i, idx) => {
-          
-        }} */}
-        </Grid>
-        <Button is_float text="+"  _onClick={() => {history.push("/write")}}></Button>
-
+        {post_list.map((p, idx) => {
+            // if (p.user_info.user_id === user_info?.uid) {
+                return (
+                <Grid bg="#ffffff"
+                        margin="8px 0px"
+                        key={p.id}
+                        _onClick={() => {
+                        history.push(`/post/${p.id}`);}}>
+                    <Post key={p.id} {...p} is_me />
+                </Grid>
+                )
+            })};
+        
+        </Grid>       
+        <Button is_float text="+" _onClick={() => {history.push("/write")}}></Button>
     </React.Fragment>   
-    )
-}
+    )}
+
 
 export default PostList;
 
