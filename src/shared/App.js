@@ -12,7 +12,6 @@ import Write from "../pages/Write"
 import { history } from "../redux/configureStore"
 
 
-
 function App() {
   return (
     <React.Fragment>
