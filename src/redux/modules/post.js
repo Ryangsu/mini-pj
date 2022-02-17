@@ -39,7 +39,8 @@ const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
 const initialState = {
   list: [],
   paging: { start: null, next: null, size: 3 },
-  is_loading: false,
+  post_one: { item_url: "", title: "", price: "", description:"",  date:"",},
+  is_loading: "",
   item_url: "",
   post : [],
 };
@@ -86,7 +87,7 @@ const getPostDB = () => {
 
 const getPostOneDB = (itemid) => {
   return function (dispatch, getsTate, {history}) {
-    console.log(itemid)
+    console.log("안녕")
     const token = localStorage.getItem('token');
     console.log(token)
     axios
@@ -140,6 +141,7 @@ export default handleActions(
       // draft.list.push(...action.payload.post_list);
       // draft.paging = action.payload.paging;
       draft.post = action.payload.post_one;
+      console.log(action.payload.post_one);
       }), 
     [ADD_POST]: (state, action) =>
       produce(state, (draft) => {
