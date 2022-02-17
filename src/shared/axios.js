@@ -24,5 +24,5 @@ export const apis = {
   // postWrite: (items) => instance.post("/api/items", items),
   postGet : (items) => instance.get("/api/items/", items),
   // postGetOne : (items) => instance.get(`/api/items/${}`),
-  deletePost: () => instance.delete("/api/items/:itemid"),
+  // deletePost: () => instance.delete("/api/items/:itemid"),
 };

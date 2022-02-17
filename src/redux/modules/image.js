@@ -2,8 +2,6 @@ import { createAction, handleActions } from "redux-actions";
 import produce from "immer";
 import { apis } from "../../shared/axios";
 
-// import { storage } from "../../shared/firebase";
-
 const UPLOADING = "UPLOADING";
 const UPLOAD_IMAGE = "UPLOAD_IMAGE";
 const SET_PREVIEW = "SET_PREVIRW"

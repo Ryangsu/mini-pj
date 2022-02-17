@@ -46,7 +46,6 @@ const PostWrite = (props) => {
 
     const addPost = () => {
       dispatch(postAction.addPostDB(image,title,price,description));
-      window.location.push("/")
     }
     const editPost = () => {
       dispatch(postAction.editPostFB(post_id, {contents: contents}))

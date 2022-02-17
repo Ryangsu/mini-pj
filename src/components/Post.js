@@ -1,16 +1,11 @@
 import React from "react";
-import {Grid, Image, Text, Button} from "../elements";
-import {actionCreators as postdeleteActions} from "../redux/modules/post";
-import { actionCreators as postActions } from "../redux/modules/image";
-
-import {history} from "../redux/configureStore";
-import {useDispatch} from "react-redux";
+import {Grid, Image, Text} from "../elements";
 import '../shared/App.css'
 
 const Post = (props) => {
     return (
         <React.Fragment>
-            <Grid padding = "16px" bg="#eeeeee" height = "100%">
+            <Grid padding = "16px" bg="#e0ffcc" height = "100%">
                 <Grid>
                 <Image shape="rectangle" src={props.item_url}/>
                 </Grid>

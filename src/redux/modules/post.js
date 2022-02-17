@@ -1,11 +1,9 @@
 import { createAction, handleActions } from "redux-actions"; 
 import { produce } from "immer"; //불변성 관리
-// import { firestore, storage } from "../../shared/firebase";
 import moment from "moment";
 import { apis } from "../../shared/axios";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as imageActions } from "./image";
+
 
 const SET_POST = "SET_POST";
 const SET_POSTONE = "SET_POSTONE"
@@ -28,9 +26,8 @@ const editPost = createAction(EDIT_POST, (post_id, post) => ({
   post_id,
   post,
 }));
-const deletePost = createAction(DELETE_POST, (post_idx, deleteList) => ({
-  post_idx,
-  deleteList,
+const deletePost = createAction(DELETE_POST, (post_one) => ({
+  post_one
 }));
 const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
 
@@ -53,24 +50,27 @@ const initialPost = {
   insert_dt: moment().format("YYYY-MM-DD HH:mm:ss"),
 };
 
-// 미들웨어 - 상품 삭제(delete)
-const deletePostDB = () => {
-    return function (dispatch, getState, {history}){
-        apis
-        .deletePost()
-        .then(function(response){
-             console.log(response)
-         })
-        .catch((err)=>{
-         console.log(err);
-        history.push("/")
-        })
-        .then(function(){
+//상품삭제
+const deletePostDB = (itemid) => {
+  return function (dispatch, getsTate, {history}) {
+    const token = localStorage.getItem('token');
+    console.log(token)
+    axios
+      .delete(`http://3.38.193.111/api/items/delete/${itemid}`,
+      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, }, })
+      .then(function(response){
+        dispatch(deletePost(response.data))
+        console.log(response)
+        history.push('/')
+      })
+      .catch(function(err){
+        alert(err.response.data.errorMessage);
+      })
+  }
+}
 
-        })
-       }
-};
 
+//메인페이지
 const getPostDB = () => {
   return function (dispatch, getState, {history}) {
     apis
@@ -85,9 +85,9 @@ const getPostDB = () => {
   }
 }
 
+//디테일 페이지
 const getPostOneDB = (itemid) => {
   return function (dispatch, getsTate, {history}) {
-    console.log("안녕")
     const token = localStorage.getItem('token');
     console.log(token)
     axios
@@ -119,6 +119,7 @@ const addPostDB = (
           console.log(response);
           window.alert("😆 업로드 되었습니다. 😆");
           history.push("/");
+          window.location.reload()
         })
         .catch((err) => {
           alert(err.response.data.errorMessage);
@@ -154,11 +155,11 @@ export default handleActions(
       }),
     [DELETE_POST]: (state, action) =>
       produce(state, (draft) => {
-        let del_list = draft.list.filter(
-          (list) => action.payload.post_id !== list.id
-        );
-        draft.list = del_list;
-      }),
+      // draft.list.push(...action.payload.post_list);
+      // draft.paging = action.payload.paging;
+      draft.post = action.payload.post_one;
+      console.log(action.payload.post_one);
+      }), 
     //무한스크롤
     [LOADING]: (state, action) =>
       produce(state, (draft) => {

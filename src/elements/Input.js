@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Text, Grid } from "./index";
 
 const Input = (props) => {
-  const { label, height, margin, placeholder, _onChange, type, multiLine, value } = props;
+  const { label, placeholder, _onChange, type, multiLine, value } = props;
   
   if(multiLine){
     return (

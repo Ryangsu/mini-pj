@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Input, Grid, Button } from "../elements";
+import { Input, Grid, Button } from "../elements";
 import styled from "styled-components";
 import LoginLogo from "../image/LoginLogo.png";
 

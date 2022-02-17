@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import { Grid, Text, Button } from "../elements";
+import { Grid, Button } from "../elements";
 import styled from "styled-components";
 import MainLogo from "../image/MainLogo.png";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
 
 import { history } from "../redux/configureStore";
@@ -22,13 +22,14 @@ const Header = (props) => {
       <React.Fragment>
         <Wrap>
         <Grid is_flex padding="4px 16px">
-        <Grid>
+        <Grid is_flex>
         <img
           src={MainLogo}
           style={{
-            width: "430px",
-            height: "430px",
+            width: "80%",
+            height: "10%"
           }}
+          onClick={() => {history.push("/");}}
         />
         </Grid>
 
@@ -58,7 +59,7 @@ const Header = (props) => {
 
   return (
     <React.Fragment>
-        <Wrap>
+        <Wrap onClick={() => {history.push("/");}}>
         <Grid is_flex padding="4px 16px">
         <Grid>
         <img
@@ -67,6 +68,7 @@ const Header = (props) => {
             width: "430px",
             height: "430px",
           }}
+          onClick={() => {history.push("/");}}
         />
         </Grid>
 
