@@ -8,49 +8,18 @@ import {useDispatch} from "react-redux";
 import '../shared/App.css'
 
 const Post = (props) => {
-    const dispatch = useDispatch();
-
-    // React.useEffect(()=>{
-
-    //     if(post_list.length === 0){
-    //         dispatch(postActions.getPostDB());
-    //     }
-    //     }, []);
-    // const {id} = props;
-
     return (
         <React.Fragment>
-            <Grid>
-                <Grid is_flex="is_flex" padding="16px">
-                    {/* <Grid is_flex="is_flex" width="auto">
-                        <Image shape="circle" src={props.src}/>
-                        <Text bold="bold">{props.user_info.user_name}</Text>
-                    </Grid> */}
-                    <Grid is_flex="is_flex" width="auto">
-                        {/* <Text>{props.insert_dt}</Text>&nbsp;&nbsp; */}
-                        {/* {
-                            props.is_me && <Button
-                                    width="auto"
-                                    margin="4px"
-                                    padding="4px"
-                                    _onClick={() => {
-                                        history.push(`/write/${props.id}`);
-                                    }}>
-                                    수정
-                                </Button>
-                        } */}
-                        {/* {props.is_me && <Button width="auto" margin="4px" padding="4px" _onClick={deletePost}>삭제</Button>} */}
-                    </Grid>
+            <Grid padding = "16px" bg="#eeeeee" height = "100%">
+                <Grid>
+                <Image shape="rectangle" src={props.item_url}/>
                 </Grid>
                 <Grid>
-                    <Image shape="rectangle" src={props.item_url}/>
+                    <Text size = "20px" bold>상품명 : {props.title}</Text>
+                    <Text size = "15px" bold>가격 : {props.price}</Text>
+                    <Text size = "15px" bold>설명 : {props.description}</Text>
+                    <Text size = "13px" bold>{props.date}</Text>
                 </Grid>
-                <Grid>
-                    <Text>이름 : {props.title}</Text>
-                    <Text>가격 : {props.price}</Text>
-                    <Text>설명 : {props.description}</Text>
-                </Grid>
-                
             </Grid>
         </React.Fragment>
     );

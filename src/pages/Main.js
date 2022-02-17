@@ -30,7 +30,7 @@ const PostList = (props) => {
         <Wrap>
         {post_list.map((p, idx) => {
                 return (
-                <Grid padding = "16px" bg="#ffffff"
+                <Grid padding = "16px" 
                         margin="8px 0px"
                         key={p._id}
                         _onClick={() => {
@@ -48,6 +48,8 @@ export default PostList;
 
 
 const Wrap = styled.div`
+    background-color: #ffffff; 
+    margin: 0px 0px 0px 0px;
     display : grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 25% 25% 25% 25%;
 `

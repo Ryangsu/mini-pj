@@ -46,7 +46,6 @@ const ImageDefailt = styled.div`
 
 const AspectOutter = styled.div`
     width: 100%;
-    min-width: 250px;
 `;
 
 const AspectInner = styled.div`

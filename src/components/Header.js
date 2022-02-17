@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import { Grid, Text, Button } from "../elements";
+import styled from "styled-components";
+import MainLogo from "../image/MainLogo.png";
 
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -17,18 +20,27 @@ const Header = (props) => {
   if (is_login) {
     return (
       <React.Fragment>
+        <Wrap>
         <Grid is_flex padding="4px 16px">
-          <Grid>
-            <Text margin="16px" size="36px" bold>
-              자췬 감이 필요해
-            </Text>
-          </Grid>
+        <Grid>
+        <img
+          src={MainLogo}
+          style={{
+            width: "430px",
+            height: "430px",
+          }}
+        />
+        </Grid>
 
-          <Grid is_flex width = "35%">
+          <Grid is_flex width = "15%">
             {/* <Button text="내정보"></Button> */}
-            <Button text="글쓰기" _onClick={() => {
+            <Button
+              text="글쓰기" _onClick={() => {
               history.push('/write');
             }}></Button>
+          </Grid>
+
+          <Grid is_flex width = "15%">
             <Button
               text="로그아웃"
               _onClick={() => {
@@ -39,20 +51,26 @@ const Header = (props) => {
             ></Button>
           </Grid>
         </Grid>
+        </Wrap>
       </React.Fragment>
     );
   }
 
   return (
     <React.Fragment>
-      <Grid is_flex padding="4px 16px">
+        <Wrap>
+        <Grid is_flex padding="4px 16px">
         <Grid>
-          <Text margin="16px" size="36px" bold>
-            자췬 감이 필요해
-          </Text>
+        <img
+          src={MainLogo}
+          style={{
+            width: "430px",
+            height: "430px",
+          }}
+        />
         </Grid>
 
-        <Grid is_flex width = "35%">
+        <Grid is_flex width = "15%">
           <Button
             text="로그인"
             _onClick={() => {
@@ -60,6 +78,9 @@ const Header = (props) => {
               window.location.reload()
             }}
           ></Button>
+        </Grid>
+
+        <Grid is_flex width = "15%">
           <Button
             text="회원가입"
             _onClick={() => {
@@ -68,9 +89,18 @@ const Header = (props) => {
           ></Button>
         </Grid>
       </Grid>
+      </Wrap>
     </React.Fragment>
   );
 };
+
+const Wrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  background-color: #82CBC4;
+`;
 
 Header.defaultProps = {};
 
