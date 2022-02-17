@@ -22,8 +22,8 @@ function App() {
         <Route path="/login" exact component={Login}/>
         <Route path="/" exact component={Main}/>
         <Route path="/write" exact component={Write}/>
-        <Route path="/write/:id" exact component={Write}/>
-        <Route path="/detail/:id" exact component={Detail}/>
+        <Route path="/write/:_id" exact component={Write}/>
+        <Route path="/detail/:_id" exact component={Detail}/>
       </ConnectedRouter>
       </BrowserRouter>
 

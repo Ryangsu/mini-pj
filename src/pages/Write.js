@@ -24,7 +24,7 @@ const PostWrite = (props) => {
     const {history} = props;
 
     const [contents, setContents] = React.useState(_post ? _post.contents : "");
-    
+    const image = useSelector((state) => state.image.item_url);
 
     React.useEffect(()=>{
       if(is_edit && !_post){
@@ -39,8 +39,14 @@ const PostWrite = (props) => {
       }
     }, []);
 
+    React.useEffect(()=>{
+      console.log("안녕하세용")
+      console.log(image)
+    }, [image]);
+
     const addPost = () => {
-      dispatch(postAction.addPostDB(item_url,title,price,description));
+      dispatch(postAction.addPostDB(image,title,price,description));
+      window.location.push("/")
     }
     const editPost = () => {
       dispatch(postAction.editPostFB(post_id, {contents: contents}))
@@ -126,10 +132,10 @@ const PostWrite = (props) => {
             <Button text="게시글 수정" _onClick={editPost} _disabled={contents === "" ? true : false}></Button>
             )  :   (
             <Button text="게시글 작성"
-             _onClick={()=>{addPost()}}
-             _disabled={description === "" ? true : false}>
+            _onClick={()=>{addPost()}}
+            _disabled={description === "" ? true : false}>
+            </Button>
 
-             </Button>
             )} 
         </Grid>
         </Grid>
