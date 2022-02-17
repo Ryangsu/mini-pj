@@ -26,8 +26,8 @@ const Header = (props) => {
         <img
           src={MainLogo}
           style={{
-            width: "80%",
-            height: "10%"
+            width: "430px",
+            height: "430px",
           }}
           onClick={() => {history.push("/");}}
         />
@@ -38,6 +38,7 @@ const Header = (props) => {
             <Button
               text="글쓰기" _onClick={() => {
               history.push('/write');
+              window.location.reload()
             }}></Button>
           </Grid>
 
@@ -59,7 +60,7 @@ const Header = (props) => {
 
   return (
     <React.Fragment>
-        <Wrap onClick={() => {history.push("/");}}>
+        <Wrap>
         <Grid is_flex padding="4px 16px">
         <Grid>
         <img

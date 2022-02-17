@@ -15,8 +15,8 @@ const Signup = (props) => {
   const [pwd_check, setPwdCheck] = React.useState("");
 
   const signup = () => {
-    
     dispatch(userActions.signupDB(nick_name, pwd, pwd_check));
+    history.push('/login')
   };
 
 return (
